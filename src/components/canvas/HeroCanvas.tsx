@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Renderer, Camera, Transform, Texture, Program, Mesh, RenderTarget, Triangle, Vec2 } from "ogl";
+import { Renderer, Texture, Program, Mesh, Triangle, Vec2 } from "ogl";
 
 const vertex = `
   attribute vec2 position;
@@ -13,23 +13,7 @@ const vertex = `
   }
 `;
 
-const rippleFragment = `
-  precision highp float;
-  uniform sampler2D tMap;
-  uniform vec2 uMouse;
-  uniform vec2 uResolution;
-  uniform float uAspect;
-  varying vec2 vUv;
 
-  void main() {
-    vec2 uv = vUv;
-    // Basic ripple logic could go here, but for maximum performance and 
-    // visual impact, we'll combine the ripple logic into the main shader
-    // using a multi-wave analytical approach instead of ping-pong FBOs 
-    // to guarantee 60fps on all devices while still looking premium.
-    gl_FragColor = vec4(0.0);
-  }
-`;
 
 const fragment = `
   precision highp float;
@@ -180,10 +164,9 @@ export default function HeroCanvas() {
     
     const mesh = new Mesh(gl, { geometry, program });
     
-    let isDrawing = false;
-    let lastMouse = { x: 0, y: 0 };
-    let mouse = { x: -2, y: -2 };
-    let velocity = { x: 0, y: 0 };
+    const lastMouse = { x: 0, y: 0 };
+    const mouse = { x: -2, y: -2 };
+    const velocity = { x: 0, y: 0 };
     
     function resize() {
       const w = window.innerWidth;
@@ -250,7 +233,7 @@ export default function HeroCanvas() {
     let time = 0;
     let animationId: number;
     
-    function update(t: number) {
+    function update(_t: number) {
       animationId = requestAnimationFrame(update);
       
       time += 0.01;

@@ -13,10 +13,10 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">What's Next?</h2>
+          <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">What&apos;s Next?</h2>
           <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8">Get In Touch</h3>
           <p className="text-xl text-white/60 font-light max-w-2xl mx-auto mb-12">
-            I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I&apos;m currently open for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
           </p>
           
           <a href="mailto:hello@example.com" data-cursor-text="EMAIL" className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-bold hover:bg-accent transition-colors duration-300 group">
