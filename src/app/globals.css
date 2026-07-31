@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-surface: #0F0F10;
+  --color-primary: #3B82F6;
+  --color-accent: #06B6D4;
+  --color-highlight: #FFFFFF;
+  --color-text-main: #F8FAFC;
+  --color-muted: #94A3B8;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #050505;
+    --surface: #0F0F10;
+    --primary: #3B82F6;
+    --accent: #06B6D4;
+    --highlight: #FFFFFF;
+    --text-main: #F8FAFC;
+    --muted: #94A3B8;
+  }
+  
+  html {
+    background-color: var(--background);
+    color: var(--text-main);
+    scroll-behavior: auto; /* Handled by Lenis */
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--highlight);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass {
+    background: rgba(15, 15, 16, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
