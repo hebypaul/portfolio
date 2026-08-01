@@ -4,22 +4,16 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    role: "Senior Frontend Engineer",
-    company: "TechNova",
+    role: "Open Source Contributor",
+    company: "Layer5",
+    period: "Active",
+    description: "Active contributor to Meshery, the open source, cloud-native manager. Focusing on building scalable infrastructure and modern architectures."
+  },
+  {
+    role: "Full Stack Developer",
+    company: "Freelance / Self-Employed",
     period: "2023 - Present",
-    description: "Led the architectural transition to Next.js 14. Improved Core Web Vitals by 40% and implemented a comprehensive WebGL-based design system."
-  },
-  {
-    role: "Creative Developer",
-    company: "Studio Vibe",
-    period: "2020 - 2023",
-    description: "Developed award-winning marketing sites using GSAP, Three.js, and React. Collaborated with top-tier design teams to push web boundaries."
-  },
-  {
-    role: "Frontend Developer",
-    company: "Digital Edge",
-    period: "2018 - 2020",
-    description: "Built scalable enterprise applications with React and Redux. Mentored junior developers and established testing standards."
+    description: "Building scalable web applications and exploring the next generation of AI tooling including Agentic Engineering, MCP, and LangGraph."
   }
 ];
 

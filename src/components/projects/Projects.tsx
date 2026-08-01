@@ -5,27 +5,27 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "Ethereal E-Commerce",
-    description: "A high-performance headless e-commerce platform built with Next.js, Shopify, and WebGL for interactive product viewers.",
-    image: "", // Placeholder for procedural fallback
-    tags: ["Next.js", "Three.js", "Shopify", "Tailwind"],
-    githubUrl: "#",
+    title: "Berakah",
+    description: "AI-powered platform that transforms technical blog posts into high-engagement social media content.",
+    image: "", // ADD IMAGE HERE (e.g., "/projects/berakah.jpg")
+    tags: ["TypeScript", "AI", "Platform"],
+    githubUrl: "https://github.com/hebypaul/Berakah",
     liveUrl: "#"
   },
   {
-    title: "Quantum Dashboard",
-    description: "Real-time analytics dashboard with complex data visualization, glassmorphism UI, and WebSocket integrations.",
-    image: "",
-    tags: ["React", "D3.js", "Zustand", "Framer Motion"],
-    githubUrl: "#",
+    title: "Tutoria",
+    description: "An online learning platform built for modern educational experiences.",
+    image: "", // ADD IMAGE HERE (e.g., "/projects/tutoria.jpg")
+    tags: ["JavaScript", "E-Learning", "Full Stack"],
+    githubUrl: "https://github.com/hebypaul/tutoria",
     liveUrl: "#"
   },
   {
-    title: "AI Canvas",
-    description: "An interactive generative art platform where users can co-create with AI using custom WebGL shaders.",
-    image: "",
-    tags: ["WebGL", "TensorFlow.js", "GLSL", "React"],
-    githubUrl: "#",
+    title: "Travel Advisor Web App",
+    description: "A comprehensive travel advisory application.",
+    image: "", // ADD IMAGE HERE (e.g., "/projects/travel.jpg")
+    tags: ["JavaScript", "React", "Travel"],
+    githubUrl: "https://github.com/hebypaul/Travel-Advisor-Web-App",
     liveUrl: "#"
   }
 ];
