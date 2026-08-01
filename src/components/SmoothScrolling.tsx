@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+import { useAnimationFrame } from "framer-motion";
 
 export function SmoothScrolling({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     // Respect OS "Reduce Motion" setting — users with vestibular disorders should
     // get native scroll behaviour, not hijacked momentum scrolling.
@@ -13,7 +16,7 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
 
     if (prefersReducedMotion) return;
 
-    const lenis = new Lenis({
+    const lenisInstance = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
@@ -23,20 +26,19 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
       touchMultiplier: 2,
     });
 
-    let rafId: number;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-
-    rafId = requestAnimationFrame(raf);
+    lenisRef.current = lenisInstance;
 
     return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
+      lenisInstance.destroy();
     };
   }, []);
+
+  // Sync Lenis perfectly with Framer Motion's internal rAF loop
+  useAnimationFrame((time) => {
+    if (lenisRef.current) {
+      lenisRef.current.raf(time);
+    }
+  });
 
   return <>{children}</>;
 }

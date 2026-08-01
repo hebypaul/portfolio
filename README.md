@@ -1,6 +1,6 @@
 # Heby T Paul — Full Stack Developer Portfolio
 
-A modern, highly optimized, and conversion-focused developer portfolio built for **Heby T Paul** (Full Stack Developer based in Kochi, India). 
+A modern, highly optimized, and conversion-focused developer portfolio built by **Heby T Paul** (Full Stack Developer based in Kochi, India).
 
 This website blends modern full-stack positioning with a dark-mode aesthetic, high-end WebGL shaders (water ripple and paint reveal effects), smooth scrolling, and responsive editorial layout.
 
@@ -21,11 +21,13 @@ This website blends modern full-stack positioning with a dark-mode aesthetic, hi
 ## 🌟 Key Features & Architecture
 
 ### 1. Hero Section & WebGL Paint Reveal Shader (`HeroCanvas.tsx`)
+
 - **Procedural Artwork Reveal**: Uses a 2D canvas brush mask (`tPaint`) combined with a 3D Simplex Noise fragment shader to reveal colorful artwork as the cursor moves over dark theme elements.
 - **Refraction & Ripple Physics**: Calculates real-time distance-based multi-wave ripples with normal vector distortion and subtle chromatic aberration.
 - **Optimized Performance**: WebGL context handled via `ogl` with an `IntersectionObserver` loop cleanup so rendering pauses when off-screen.
 
 ### 2. Modern Conversion Flow & Section Ordering
+
 1. **Hero**: Clear positioning ("Full Stack Developer"), social links rail, and dual primary/secondary CTAs.
 2. **About**: Editorial 4/8 asymmetric split with a sticky profile photo, availability indicator, and numbered core capability rows.
 3. **Featured Projects (Work)**: Shows selected real-world work (**Berakah**, **Tutoria**, **Travel Advisor**) before experience. Magnetic 3D tilt cards tuned to ±5° for optimal link accessibility and immediate content readability.
@@ -33,6 +35,7 @@ This website blends modern full-stack positioning with a dark-mode aesthetic, hi
 5. **Skills / Tech Stack**: Categorized into scannable domain groups (*Frontend*, *Backend*, *AI & Tools*) replacing redundant tag clouds.
 
 ### 3. Snappy Spring Physics Custom Cursor
+
 - Custom spring-driven cursor (`CustomCursor.tsx`) tuned with physics (`damping: 30, stiffness: 400, mass: 0.2`) to eliminate artificial drag while maintaining smooth fluid motion.
 
 ---

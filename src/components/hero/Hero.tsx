@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import dynamic from "next/dynamic";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "../ui/Icons";
@@ -14,6 +14,13 @@ const socials = [
 ];
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  
+  // Parallax and scale effects based on scroll position
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const scale = useTransform(scrollY, [0, 400], [1, 0.9]);
+
   const scrollTo = (e: React.MouseEvent, selector: string) => {
     e.preventDefault();
     const el = document.querySelector(selector);
@@ -28,7 +35,10 @@ export default function Hero() {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center pointer-events-none p-6 mix-blend-difference">
+      <motion.div 
+        style={{ y, opacity, scale, willChange: "transform, opacity" }}
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center pointer-events-none p-6 mix-blend-difference"
+      >
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,7 +83,7 @@ export default function Hero() {
             Let&apos;s Talk
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Social Links — Bottom Left */}
       <motion.div
