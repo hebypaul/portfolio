@@ -5,6 +5,7 @@ import { SmoothScrolling } from "@/components/SmoothScrolling";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Loader from "@/components/ui/Loader";
 import Navbar from "@/components/ui/Navbar";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
           <CustomCursor />
           {children}
         </SmoothScrolling>
+        <Analytics />
       </body>
     </html>
   );
