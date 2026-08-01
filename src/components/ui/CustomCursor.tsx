@@ -12,9 +12,12 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  // Balanced spring configuration: slightly more elastic than before, but snappier than the original
+  const springConfig = { damping: 30, stiffness: 400, mass: 0.2 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
+
+
 
   const isVisibleRef = useRef(false);
 
