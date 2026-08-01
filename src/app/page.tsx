@@ -16,8 +16,8 @@ export default function Home() {
       {/* Hero is synchronous — it is above the fold and is the LCP element */}
       <Hero />
       <About />
-      <Experience />
       <Projects />
+      <Experience />
       <Skills />
       <Contact />
       <Footer />

@@ -2,37 +2,63 @@
 
 import { motion } from "framer-motion";
 
-const skills = [
-  "TypeScript", "Python", "JavaScript", "SQL", "Next.js", "React", "Tailwind CSS",
-  "Node.js", "Supabase", "PostgreSQL", "Redis", "MCP", "LangGraph", "Linux"
+const skillGroups = [
+  {
+    label: "Frontend",
+    skills: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS"],
+  },
+  {
+    label: "Backend",
+    skills: ["Node.js", "PostgreSQL", "Supabase", "Redis", "SQL"],
+  },
+  {
+    label: "AI & Tools",
+    skills: ["Python", "MCP", "LangGraph", "Git", "Linux"],
+  },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 px-6 md:px-12 lg:px-24 bg-surface relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-24 md:py-32 lg:py-40 px-6 md:px-12 lg:px-24 bg-surface relative z-10 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center md:text-left"
+          className="mb-16 md:mb-20"
         >
-          <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">Expertise</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">Core Skills</h3>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-sm font-mono text-primary tracking-widest uppercase">Technologies</span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Tools I Work With</h2>
         </motion.div>
 
-        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-          {skills.map((skill, index) => (
+        {/* Skill Groups */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          {skillGroups.map((group, groupIndex) => (
             <motion.div
-              key={skill}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.05, type: "spring", stiffness: 100 }}
-              className="px-6 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 hover:border-primary/50 transition-all cursor-default"
+              key={group.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
             >
-              {skill}
+              <h3 className="text-xs font-mono text-white/40 tracking-widest uppercase mb-6">
+                {group.label}
+              </h3>
+              <ul className="space-y-3">
+                {group.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="text-white/70 text-base font-light pl-4 border-l border-white/10 hover:border-primary/50 hover:text-white transition-all duration-200"
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

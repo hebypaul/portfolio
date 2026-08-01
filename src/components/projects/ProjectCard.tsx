@@ -24,8 +24,8 @@ export default function ProjectCard({ title, description, image, tags, githubUrl
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -79,7 +79,7 @@ export default function ProjectCard({ title, description, image, tags, githubUrl
         </div>
         
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-8" style={{ transform: "translateZ(60px)" }}>
-          <div className="flex flex-wrap gap-2 mb-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+          <div className="flex flex-wrap gap-2 mb-4 transition-all duration-500 delay-100">
             {tags.map((tag) => (
               <span key={tag} className="px-3 py-1 text-xs font-medium bg-white/10 backdrop-blur-md rounded-full text-white/90 border border-white/20">
                 {tag}
@@ -87,13 +87,13 @@ export default function ProjectCard({ title, description, image, tags, githubUrl
             ))}
           </div>
           
-          <h3 className="text-3xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-all duration-500">{title}</h3>
+          <h3 className="text-3xl font-bold text-white mb-2 transition-all duration-500">{title}</h3>
           
-          <p className="text-white/70 mb-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-75 line-clamp-2">
+          <p className="text-white/70 mb-6 transition-all duration-500 delay-75 line-clamp-2">
             {description}
           </p>
           
-          <div className="flex items-center gap-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150">
+          <div className="flex items-center gap-4 opacity-50 group-hover:opacity-100 transition-all duration-500 delay-150">
             {githubUrl && (
               <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="View source code" data-cursor-text="SOURCE" className="p-2 bg-white/10 hover:bg-white hover:text-black rounded-full transition-colors backdrop-blur-md">
                 <Code size={20} />

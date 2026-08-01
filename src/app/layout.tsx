@@ -9,19 +9,19 @@ import Navbar from "@/components/ui/Navbar";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Premium Interactive Portfolio",
-  description: "An award-winning interactive portfolio showcasing modern web development, creative coding, and premium design.",
+  title: "Heby T Paul — Full Stack Developer",
+  description: "Full Stack Developer based in Kochi, India. Building modern web applications with Next.js, React, TypeScript, and Node.js. Open source contributor at Layer5.",
   openGraph: {
-    title: "Premium Interactive Portfolio",
-    description: "An award-winning interactive portfolio showcasing modern web development, creative coding, and premium design.",
-    url: "https://portfolio.local",
-    siteName: "Interactive Portfolio",
+    title: "Heby T Paul — Full Stack Developer",
+    description: "Full Stack Developer building modern web applications with Next.js, React, TypeScript, and Node.js.",
+    siteName: "Heby T Paul",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Premium Interactive Portfolio",
-    description: "An award-winning interactive portfolio showcasing modern web development.",
+    title: "Heby T Paul — Full Stack Developer",
+    description: "Full Stack Developer building modern web applications with Next.js, React, and TypeScript.",
+    creator: "@HebyPaul",
   }
 };
 
