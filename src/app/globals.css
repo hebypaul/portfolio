@@ -32,7 +32,7 @@
   body {
     background-color: var(--background);
     color: var(--text-main);
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -40,6 +40,23 @@
   ::selection {
     background-color: var(--primary);
     color: var(--highlight);
+  }
+
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

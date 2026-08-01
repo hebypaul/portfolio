@@ -9,17 +9,21 @@ export default function Loader() {
 
   useEffect(() => {
     let current = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       current += Math.floor(Math.random() * 10) + 1;
       if (current >= 100) {
         current = 100;
         clearInterval(interval);
-        setTimeout(() => setLoading(false), 500);
+        timeoutId = setTimeout(() => setLoading(false), 500);
       }
       setProgress(current);
     }, 100);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -38,7 +42,7 @@ export default function Loader() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-4xl md:text-6xl font-bold tracking-tighter"
             >
-              PORTFOLIO
+              Heby Paul
             </motion.h1>
             <div className="mt-4 w-48 h-1 bg-white/10 rounded-full overflow-hidden relative">
               <motion.div 

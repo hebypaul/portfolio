@@ -8,7 +8,7 @@ import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-background selection:bg-primary selection:text-white">
+    <main id="main" className="flex min-h-screen flex-col bg-background selection:bg-primary selection:text-white">
       <Hero />
       <About />
       <Experience />

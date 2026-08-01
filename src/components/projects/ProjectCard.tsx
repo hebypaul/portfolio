@@ -45,17 +45,18 @@ export default function ProjectCard({ title, description, image, tags, githubUrl
   };
 
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="relative w-full h-125 rounded-2xl cursor-pointer group glass perspective-1000"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <div className="perspective-1000">
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-full h-125 rounded-2xl cursor-pointer group glass"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      >
       <div 
         className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)]"
         style={{ transform: "translateZ(30px)" }}
@@ -88,18 +89,19 @@ export default function ProjectCard({ title, description, image, tags, githubUrl
           
           <div className="flex items-center gap-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-150">
             {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noreferrer" data-cursor-text="SOURCE" className="p-2 bg-white/10 hover:bg-white hover:text-black rounded-full transition-colors backdrop-blur-md">
+              <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="View source code" data-cursor-text="SOURCE" className="p-2 bg-white/10 hover:bg-white hover:text-black rounded-full transition-colors backdrop-blur-md">
                 <Code size={20} />
               </a>
             )}
             {liveUrl && (
-              <a href={liveUrl} target="_blank" rel="noreferrer" data-cursor-text="VISIT" className="p-2 bg-white/10 hover:bg-white hover:text-black rounded-full transition-colors backdrop-blur-md">
+              <a href={liveUrl} target="_blank" rel="noreferrer" aria-label="Visit live site" data-cursor-text="VISIT" className="p-2 bg-white/10 hover:bg-white hover:text-black rounded-full transition-colors backdrop-blur-md">
                 <ExternalLink size={20} />
               </a>
             )}
           </div>
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

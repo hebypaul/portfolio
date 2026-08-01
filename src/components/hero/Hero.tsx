@@ -24,7 +24,7 @@ export default function Hero() {
         >
           CREATIVE
           <br />
-          <span className="text-transparent -webkit-text-stroke-1 stroke-white outline-text">DEVELOPER</span>
+          <span className="text-transparent [-webkit-text-stroke:1px_white] outline-text">DEVELOPER</span>
         </motion.h1>
         
         <motion.p
@@ -44,6 +44,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 pointer-events-auto mix-blend-difference"
       >
         <button 
+          aria-label="Scroll down"
           data-cursor-text="SCROLL"
           className="p-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-colors duration-300"
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}

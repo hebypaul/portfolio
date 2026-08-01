@@ -1,1 +1,3 @@
+# Claude Config
+
 @AGENTS.md

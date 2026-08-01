@@ -45,7 +45,7 @@ export default function About() {
           <div className="w-full h-full border border-white/10 rounded-2xl relative overflow-hidden flex items-center justify-center">
              <div className="w-64 h-64 rounded-full bg-primary/30 blur-[100px] absolute" />
              <div className="w-48 h-48 rounded-full bg-accent/40 blur-[80px] absolute translate-x-20 translate-y-20" />
-             <div className="relative z-10 text-white/50 font-mono text-sm tracking-widest">[ PORTRAIT OR ABSTRACT VISUAL ]</div>
+             <div className="relative z-10 text-white/50 font-mono text-sm tracking-widest"></div>
           </div>
         </motion.div>
       </div>
