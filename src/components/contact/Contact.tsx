@@ -20,8 +20,8 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">What&apos;s Next?</h2>
-          <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8">Let&apos;s Talk</h3>
+          <span className="block text-sm font-mono text-primary tracking-widest uppercase mb-4">What&apos;s Next?</span>
+          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8">Let&apos;s Talk</h2>
           <p className="text-xl text-white/60 font-light max-w-2xl mx-auto mb-12">
             I am currently open for new opportunities. Whether you have a project in mind, an opportunity to discuss, or just want to connect, my inbox is always open.
           </p>

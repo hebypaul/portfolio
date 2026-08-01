@@ -41,8 +41,8 @@ export default function Projects() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">Selected Work</h2>
-          <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">Featured Projects</h3>
+          <span className="block text-sm font-mono text-primary tracking-widest uppercase mb-4">Selected Work</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">Featured Projects</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

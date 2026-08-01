@@ -28,8 +28,8 @@ export default function Experience() {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-4">Journey</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">Experience</h3>
+          <span className="block text-sm font-mono text-primary tracking-widest uppercase mb-4">Journey</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">Experience</h2>
         </motion.div>
 
         <div className="relative border-l border-white/10 ml-4 md:ml-0">
@@ -46,10 +46,10 @@ export default function Experience() {
               <div className="absolute w-4 h-4 bg-primary rounded-full left-[-8.5px] top-1.5 shadow-[0_0_15px_rgba(59,130,246,0.5)] border-2 border-background" />
               
               <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
-                <h4 className="text-2xl font-bold text-white">{exp.role}</h4>
+                <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
                 <span className="text-primary font-mono text-sm mt-1 md:mt-0">{exp.period}</span>
               </div>
-              <h5 className="text-lg text-white/50 mb-4">{exp.company}</h5>
+              <h4 className="text-lg text-white/50 mb-4">{exp.company}</h4>
               <p className="text-white/70 leading-relaxed font-light">
                 {exp.description}
               </p>

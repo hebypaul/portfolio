@@ -21,6 +21,34 @@ export default function Home() {
       <Skills />
       <Contact />
       <Footer />
+      {/* JSON-LD Structured Data for Person (SEO) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Heby T Paul",
+            url: "https://hebypaul.vercel.app",
+            jobTitle: "Full Stack Developer",
+            description: "Full Stack Developer based in Kochi, India. Building modern web applications with Next.js, React, TypeScript, and Node.js.",
+            sameAs: [
+              "https://github.com/hebypaul",
+              "https://linkedin.com/in/hebytpaul",
+              "https://x.com/HebyPaul"
+            ],
+            knowsAbout: [
+              "Next.js",
+              "React",
+              "TypeScript",
+              "Node.js",
+              "Web Development",
+              "PostgreSQL",
+              "AI Integration"
+            ]
+          })
+        }}
+      />
     </main>
   );
 }
