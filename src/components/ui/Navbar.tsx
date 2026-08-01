@@ -18,6 +18,18 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   // Track active section and scroll state without blocking the main thread excessively
   useEffect(() => {
     let scrollTimeout: ReturnType<typeof setTimeout> | undefined;
@@ -173,7 +185,7 @@ export default function Navbar() {
             animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-background/80 flex flex-col justify-center px-8 md:hidden"
+            className="fixed inset-0 z-40 bg-background/95 flex flex-col justify-center px-8 md:hidden"
           >
             <nav className="flex flex-col gap-6">
               {links.map((link, i) => (
@@ -199,8 +211,8 @@ export default function Navbar() {
               className="absolute bottom-12 left-8 right-8 flex flex-col gap-4"
             >
               <div className="h-px bg-white/10 w-full mb-4" />
-              <a href="mailto:hebytpaul1111@gmail.com" className="text-white/60 hover:text-white">hebytpaul1111@gmail.com</a>
-              <div className="flex gap-4 text-white/60">
+              <a href="mailto:hebytpaul1111@gmail.com" className="text-white/80 hover:text-white font-medium">hebytpaul1111@gmail.com</a>
+              <div className="flex gap-4 text-white/80 font-medium">
                 <a href="https://x.com/HebyPaul" target="_blank" rel="noopener noreferrer" className="hover:text-white">X</a>
                 <a href="https://linkedin.com/in/hebytpaul" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
                 <a href="https://github.com/hebypaul" target="_blank" rel="noopener noreferrer" className="hover:text-white">GitHub</a>

@@ -100,7 +100,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             aria-label={s.name}
             data-cursor-text={s.name.toUpperCase()}
-            className="text-white/40 hover:text-white transition-colors duration-300"
+            className="text-white/70 hover:text-white transition-colors duration-300"
           >
             <s.icon size={18} />
           </a>
@@ -118,7 +118,7 @@ export default function Hero() {
         <button 
           aria-label="Scroll down"
           data-cursor-text="SCROLL"
-          className="p-3 rounded-full border border-white/20 text-white/40 hover:text-white hover:border-white/40 transition-all duration-300"
+          className="p-3 rounded-full border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-all duration-300"
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
         >
           <ArrowDown size={20} />

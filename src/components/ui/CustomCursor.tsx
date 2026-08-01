@@ -8,6 +8,7 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
   const [cursorText, setCursorText] = useState("");
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -22,6 +23,11 @@ export default function CustomCursor() {
   const isVisibleRef = useRef(false);
 
   useEffect(() => {
+    // Check if the device is a touch device (no precise mouse pointer)
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsTouchDevice(true);
+      return;
+    }
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -64,10 +70,12 @@ export default function CustomCursor() {
     };
   }, [cursorX, cursorY]);
 
+  if (isTouchDevice) return null;
+
   return (
     <motion.div
       className={cn(
-        "fixed top-0 left-0 z-50 pointer-events-none flex items-center justify-center rounded-full mix-blend-difference transition-all duration-200",
+        "hidden md:flex fixed top-0 left-0 z-50 pointer-events-none items-center justify-center rounded-full mix-blend-difference transition-all duration-200",
         isVisible ? "opacity-100" : "opacity-0",
         isPointer ? "bg-highlight" : "bg-white border border-white/20 backdrop-blur-sm"
       )}
