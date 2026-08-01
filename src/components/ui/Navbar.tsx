@@ -199,7 +199,7 @@ export default function Navbar() {
               className="absolute bottom-12 left-8 right-8 flex flex-col gap-4"
             >
               <div className="h-px bg-white/10 w-full mb-4" />
-              <a href="mailto:hebytpaul@gmail.com" className="text-white/60 hover:text-white">hebytpaul@gmail.com</a>
+              <a href="mailto:hebytpaul1111@gmail.com" className="text-white/60 hover:text-white">hebytpaul1111@gmail.com</a>
               <div className="flex gap-4 text-white/60">
                 <a href="https://x.com/HebyPaul" target="_blank" rel="noopener noreferrer" className="hover:text-white">X</a>
                 <a href="https://linkedin.com/in/hebytpaul" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>

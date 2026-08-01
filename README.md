@@ -31,7 +31,6 @@ This website blends modern full-stack positioning with a dark-mode aesthetic, hi
 3. **Featured Projects (Work)**: Shows selected real-world work (**Berakah**, **Tutoria**, **Travel Advisor**) before experience. Magnetic 3D tilt cards tuned to ±5° for optimal link accessibility and immediate content readability.
 4. **Experience**: Open-source contributions at Layer5 (Meshery) & freelance full-stack development journey.
 5. **Skills / Tech Stack**: Categorized into scannable domain groups (*Frontend*, *Backend*, *AI & Tools*) replacing redundant tag clouds.
-6. **Contact & Footer**: Direct email link (`hebytpaul@gmail.com`) and social presence.
 
 ### 3. Snappy Spring Physics Custom Cursor
 - Custom spring-driven cursor (`CustomCursor.tsx`) tuned with physics (`damping: 30, stiffness: 400, mass: 0.2`) to eliminate artificial drag while maintaining smooth fluid motion.

@@ -26,7 +26,7 @@ export default function Contact() {
             I am currently open for new opportunities. Whether you have a project in mind, an opportunity to discuss, or just want to connect, my inbox is always open.
           </p>
           
-          <a href="mailto:hebytpaul@gmail.com" data-cursor-text="EMAIL" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-background rounded-full font-bold hover:scale-105 transition-transform duration-300 group mb-16">
+          <a href="mailto:hebytpaul1111@gmail.com" data-cursor-text="EMAIL" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-background rounded-full font-bold hover:scale-105 transition-transform duration-300 group mb-16">
             <Mail size={20} />
             <span>Send a Message</span>
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
