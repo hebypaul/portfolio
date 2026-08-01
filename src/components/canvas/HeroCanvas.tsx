@@ -169,25 +169,27 @@ const fragment = `
 
 export default function HeroCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [webglSupported, setWebglSupported] = useState(true);
+
+  // Detect WebGL support synchronously at render time (lazy useState initializer).
+  // This avoids the anti-pattern of calling setState inside a useEffect body.
+  const [webglSupported] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true; // SSR: assume supported
+    const probe = document.createElement("canvas");
+    const gl =
+      probe.getContext("webgl2") ||
+      probe.getContext("webgl") ||
+      probe.getContext("experimental-webgl");
+    if (!gl) return false;
+    (gl as WebGLRenderingContext).getExtension("WEBGL_lose_context")?.loseContext();
+    return true;
+  });
 
   useEffect(() => {
     if (!containerRef.current) return;
     const container = containerRef.current;
 
-    // Pre-flight WebGL check — consume and immediately free a test context
-    const testCanvas = document.createElement("canvas");
-    const testGl =
-      testCanvas.getContext("webgl2") ||
-      testCanvas.getContext("webgl") ||
-      testCanvas.getContext("experimental-webgl");
-    if (!testGl) {
-      setWebglSupported(false);
-      return;
-    }
-    (testGl as WebGLRenderingContext)
-      .getExtension("WEBGL_lose_context")
-      ?.loseContext();
+    // Pre-flight check already done in useState initializer above.
+    // If we reach here, WebGL is confirmed available.
 
     // OGL Renderer
     let renderer: InstanceType<typeof Renderer>;
@@ -199,12 +201,13 @@ export default function HeroCanvas() {
         powerPreference: "high-performance",
       });
     } catch {
-      setWebglSupported(false);
+      // Context creation failed (e.g. all 16 browser slots exhausted).
+      // Bail silently — the CSS fallback is already rendered by !webglSupported.
       return;
     }
 
     const gl = renderer.gl;
-    if (!gl) { setWebglSupported(false); return; }
+    if (!gl) return;
 
     container.appendChild(gl.canvas);
 
@@ -292,11 +295,28 @@ export default function HeroCanvas() {
 
     window.addEventListener("pointermove", onPointerMove);
 
+    // Pause the WebGL loop when canvas is scrolled out of view (saves GPU + battery)
+    let isVisible = true;
     let time = 0;
-    let animationId: number;
+    let animationId = 0;
     let frameCount = 0;
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animationId) {
+          animationId = requestAnimationFrame(update);
+        }
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(container);
+
     function update() {
+      // Clear the id so the observer can restart it
+      animationId = 0;
+      if (!isVisible) return;
+
       animationId = requestAnimationFrame(update);
       time += 0.01;
       program.uniforms.uTime.value = time;
@@ -333,6 +353,7 @@ export default function HeroCanvas() {
     animationId = requestAnimationFrame(update);
 
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onPointerMove);
       cancelAnimationFrame(animationId);

@@ -1,52 +1,53 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const links = [
-  { name: "About", href: "#about" },
+  { name: "About",      href: "#about" },
   { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
+  { name: "Projects",   href: "#projects" },
+  { name: "Skills",     href: "#skills" },
+  { name: "Contact",    href: "#contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useScroll drives the background/backdrop purely through Framer Motion transforms —
+  // no React setState on scroll, no re-renders, runs off the main thread.
+  const { scrollY } = useScroll();
+  const bgOpacity   = useTransform(scrollY, [0, 80], [0, 0.6]);
+  const blurOpacity = useTransform(scrollY, [0, 80], [0, 1]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    
     const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    if (target) target.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 mix-blend-difference",
-          scrolled ? "bg-black/50 backdrop-blur-md py-3 mix-blend-normal" : "bg-transparent"
-        )}
-      >
-        <a 
-          href="#" 
-          className="text-xl font-bold text-white tracking-tighter"
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4">
+        {/* Animated glass background — driven by scroll transform, NOT useState */}
+        <motion.div
+          className="absolute inset-0 bg-black backdrop-blur-md border-b border-white/5"
+          style={{ opacity: bgOpacity }}
+          aria-hidden
+        />
+        {/* Extra blur layer fades in */}
+        <motion.div
+          className="absolute inset-0 backdrop-blur-md"
+          style={{ opacity: blurOpacity }}
+          aria-hidden
+        />
+
+        {/* Logo */}
+        <a
+          href="#"
+          className="relative text-xl font-bold text-white tracking-tighter z-10"
           data-cursor-text="HOME"
           onClick={(e) => handleClick(e, "body")}
         >
@@ -54,7 +55,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="relative z-10 hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
               key={link.name}
@@ -70,7 +71,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 text-white"
+          className="relative z-10 md:hidden p-2 text-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
           aria-expanded={isOpen}
@@ -79,7 +80,7 @@ export default function Navbar() {
         </button>
       </header>
 
-      {/* Mobile Nav */}
+      {/* Mobile full-screen Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -94,7 +95,7 @@ export default function Navbar() {
                 href={link.href}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
                 onClick={(e) => handleClick(e, link.href)}
                 className="text-3xl font-bold text-white"
               >
