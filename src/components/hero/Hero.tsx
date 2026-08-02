@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Foreground Content */}
       <motion.div 
         style={{ y, opacity, scale, willChange: "transform, opacity" }}
-        className="relative z-10 flex flex-col items-center justify-center h-full text-center pointer-events-none p-6 mix-blend-difference"
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center pointer-events-none p-6 md:mix-blend-difference"
       >
         <motion.h1
           initial={{ opacity: 0, y: 50 }}

@@ -23,11 +23,18 @@ export default function CustomCursor() {
   const isVisibleRef = useRef(false);
 
   useEffect(() => {
-    // Check if the device is a touch device (no precise mouse pointer)
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      setIsTouchDevice(true);
-      return;
-    }
+    const mediaQuery = window.matchMedia("(pointer: coarse)");
+    const updateTouch = (e: MediaQueryListEvent | MediaQueryList) => setIsTouchDevice(e.matches);
+    updateTouch(mediaQuery);
+    
+    const handler = (e: MediaQueryListEvent) => updateTouch(e);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);

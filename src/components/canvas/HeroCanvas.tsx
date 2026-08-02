@@ -174,6 +174,12 @@ export default function HeroCanvas() {
   // This avoids the anti-pattern of calling setState inside a useEffect body.
   const [webglSupported] = useState<boolean>(() => {
     if (typeof window === "undefined") return true; // SSR: assume supported
+    
+    // Disable WebGL on mobile and touch devices to improve performance and prevent lag
+    if (window.matchMedia("(max-width: 768px)").matches || window.matchMedia("(pointer: coarse)").matches) {
+      return false;
+    }
+    
     const probe = document.createElement("canvas");
     const gl =
       probe.getContext("webgl2") ||
