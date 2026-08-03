@@ -20,15 +20,15 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <span className="block text-sm font-mono text-primary tracking-widest uppercase mb-4">What&apos;s Next?</span>
-          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mb-8">Let&apos;s Talk</h2>
+          <span className="block text-sm font-mono text-primary tracking-widest uppercase mb-4">Let&apos;s build something</span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter mb-8">Have something worth building?</h2>
           <p className="text-xl text-white/60 font-light max-w-2xl mx-auto mb-12">
-            I am currently open for new opportunities. Whether you have a project in mind, an opportunity to discuss, or just want to connect, my inbox is always open.
+            Available for freelance web development, product work, and selected remote opportunities. Tell me briefly what you&apos;re working on.
           </p>
           
           <a href="mailto:hebytpaul1111@gmail.com" data-cursor-text="EMAIL" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-background rounded-full font-bold hover:scale-105 transition-transform duration-300 group mb-16">
             <Mail size={20} />
-            <span>Send a Message</span>
+            <span>Start a Conversation</span>
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
 

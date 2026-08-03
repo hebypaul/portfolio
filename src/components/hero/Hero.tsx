@@ -54,9 +54,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="mt-6 text-lg md:text-xl text-white/70 max-w-xl mx-auto"
+          className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto"
         >
-          Building modern web applications with strong engineering, thoughtful design, and real-world performance.
+          I design and build fast, scalable web applications for startups, businesses, and product teams—from polished interfaces to production-ready full-stack systems.
         </motion.p>
 
         {/* CTAs */}
@@ -64,23 +64,23 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.3 }}
-          className="flex gap-4 mt-10 pointer-events-auto"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 pointer-events-auto"
         >
+          <a
+            href="#contact"
+            onClick={(e) => scrollTo(e, "#contact")}
+            data-cursor-text="TALK"
+            className="px-8 py-4 bg-white text-background font-bold text-sm rounded-full hover:scale-105 transition-transform duration-300 w-full sm:w-auto"
+          >
+            Start a Project
+          </a>
           <a
             href="#projects"
             onClick={(e) => scrollTo(e, "#projects")}
             data-cursor-text="WORK"
-            className="px-7 py-3.5 bg-white text-background font-bold text-sm rounded-full hover:scale-105 transition-transform duration-300"
+            className="px-8 py-4 border border-white/20 text-white font-medium text-sm rounded-full hover:bg-white/10 transition-colors duration-300 w-full sm:w-auto"
           >
             View My Work
-          </a>
-          <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, "#contact")}
-            data-cursor-text="HELLO"
-            className="px-7 py-3.5 border border-white/20 text-white font-medium text-sm rounded-full hover:bg-white/10 transition-colors duration-300"
-          >
-            Let&apos;s Talk
           </a>
         </motion.div>
       </motion.div>

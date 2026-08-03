@@ -10,21 +10,21 @@ const profilePic: string | null = "/profile.png";
 const capabilities = [
   {
     number: "01",
-    title: "Full-Stack Development",
+    title: "Web Applications & SaaS",
     description:
-      "Production-ready applications with Next.js, React, Node.js, and PostgreSQL — from authentication to deployment.",
+      "Production-ready platforms with Next.js, React, Node.js, and PostgreSQL — from data-rich dashboards to full business logic.",
   },
   {
     number: "02",
-    title: "AI & Agentic Systems",
+    title: "AI-Enabled Applications",
     description:
-      "Building intelligent tooling with MCP, LangGraph, and modern AI architectures that solve real problems.",
+      "Building intelligent workflows, API integrations, and custom agentic tools with LangGraph and modern AI architectures.",
   },
   {
     number: "03",
-    title: "Open Source & Cloud-Native",
+    title: "Performance & Architecture",
     description:
-      "Active contributor to Meshery at Layer5, working on scalable cloud-native infrastructure and management systems.",
+      "Designing scalable infrastructure and optimizing web performance for real-world speed, accessibility, and Core Web Vitals.",
   },
 ];
 

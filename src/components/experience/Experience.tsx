@@ -1,19 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const experiences = [
   {
     role: "Open Source Contributor",
-    company: "Layer5",
+    company: "Layer5 / Meshery",
     period: "Active",
-    description: "Active contributor to Meshery, the open source, cloud-native manager. Focusing on building scalable infrastructure and modern architectures."
+    description: "Contributing to Meshery, an open-source cloud-native infrastructure management project. Delivering robust features and solving architecture problems.",
+    link: "https://github.com/meshery/meshery/pulls?q=is%3Apr+author%3Ahebypaul",
+    linkText: "View Contributions"
   },
   {
     role: "Full Stack Developer",
-    company: "Freelance / Self-Employed",
+    company: "Freelance / Independent",
     period: "2023 - Present",
-    description: "Building scalable web applications and exploring the next generation of AI tooling including Agentic Engineering, MCP, and LangGraph."
+    description: "Build full-stack web applications from UI to database architecture. Deliver modern interfaces, robust APIs, and AI-enabled features for scalable business solutions."
   }
 ];
 
@@ -50,9 +53,14 @@ export default function Experience() {
                 <span className="text-primary font-mono text-sm mt-1 md:mt-0">{exp.period}</span>
               </div>
               <h4 className="text-lg text-white/50 mb-4">{exp.company}</h4>
-              <p className="text-white/70 leading-relaxed font-light">
+              <p className="text-white/70 leading-relaxed font-light mb-4">
                 {exp.description}
               </p>
+              {exp.link && (
+                <a href={exp.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-white transition-colors duration-300">
+                  {exp.linkText} <ArrowRight size={14} />
+                </a>
+              )}
             </motion.div>
           ))}
         </div>
